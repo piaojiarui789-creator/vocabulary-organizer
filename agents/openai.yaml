@@ -1,0 +1,4 @@
+interface:
+  display_name: "英语单词整理"
+  short_description: "识别文本或照片中的英语词汇，自动纠错并生成可打印、可追加的中英双栏词表"
+  default_prompt: "使用 $vocabulary-organizer 整理这些词汇，按默认作业排版保存。"
