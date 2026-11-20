@@ -1,79 +1,80 @@
-# Vocabulary Organizer · 英语单词整理
+# Vocabulary Organizer
 
-A Codex skill that organizes English vocabulary into printable bilingual study sheets.
+**English** · [简体中文](README.zh-CN.md) · [한국어](README.ko.md)
 
-영어 단어와 표현을 인쇄할 수 있는 영어·중국어 이중 언어 학습표로 정리해 주는 Codex 스킬입니다.
+Turn vocabulary notes, handwritten lists, and screenshots into clean, printable English–Chinese study sheets with Codex.
 
-适合日常英语作业、课堂生词和错词整理的 Codex Skill。把杂乱的词汇、手写笔记或截图整理成一份可以直接打印和持续补充的中英词汇表。
+Built for homework, classroom vocabulary, and reviewing spelling mistakes. Send your words once, then keep adding to the same document as you learn.
 
-它不是背单词软件，也不要求你每次手动设置表格。发来词汇，新建或追加即可。
+## Features
 
-## 能做什么
+- Extract English words, phrases, and Chinese meanings from text or images.
+- Correct common spelling mistakes and supply missing definitions while preserving the input order.
+- Remove phonetic notation, parts of speech, and numbering for a clean two-column word list.
+- Automatically name new documents and tabs; append new entries to the next available row in the same task.
+- Use a consistent, print-friendly A4 layout and verify the saved content.
 
-- 从文字、手写照片和截图中识别英文单词、短语及中文释义。
-- 修正常见拼写错误，保留有意义的词形和原始顺序；缺少释义时自动补全。
-- 去掉音标、词性和序号，只保留英文与中文两列。
-- 自动创建文档，使用简短的文档名和标签页名；同一任务的后续输入追加至下一空行。
-- 默认使用适合 A4 打印的作业排版，并在写入后核对内容。
+## Quick start
 
-## 安装
+### 1. Install
 
-需要支持 `SKILL.md` 的 Codex 环境。使用 Google Docs 保存结果时，还需要连接可编辑 Google Docs 的工具，并登录自己的 Google 账号。
+Use a Codex environment that supports `SKILL.md`. To save directly to Google Docs, connect a tool with permission to edit your Google Docs documents.
 
-通过 GitHub 下载或克隆本仓库，将包含 `SKILL.md` 和 `agents/` 的文件夹命名为 `vocabulary-organizer`，放到 Codex 的个人技能目录（默认 `~/.codex/skills/`）中。重新打开技能列表，选择「英语单词整理」，或在对话中显式调用 `$vocabulary-organizer`。
+Download or clone this repository, keep the folder name `vocabulary-organizer`, and place it in your personal Codex skills directory (typically `~/.codex/skills/`). Open the skills list or invoke `$vocabulary-organizer` in a conversation.
 
-## 使用
-
-首次整理：
+### 2. Send your vocabulary
 
 ```text
-使用 $vocabulary-organizer 整理这些词汇：
+Use $vocabulary-organizer to organize these words:
 recycle /ˌriːˈsaɪkl/ v. 回收利用
 go aborad 出国
 available
 ```
 
-预期内容：
+### 3. Get a clean study sheet
 
-| 英文 | 中文释义 |
+| English | Chinese meaning |
 | :---: | :--- |
 | recycle | 回收利用 |
 | go abroad | 出国 |
 | available | 可获得的、可用的 |
 
-实际文档使用原生双栏表格，表格中不加入标题行、音标、词性或订正记录。拼写订正在对话中单独说明。
+The actual document contains a native two-column table without a header row, phonetics, parts of speech, or correction notes. Spelling corrections are reported separately in the conversation.
 
-也可以上传照片或截图，再说「整理一下」。同一任务后续直接发送新词即可，不必重复选择保存位置。如果需要指定文档或标签页，在请求中写明即可。
+You can also upload a photo or screenshot. Send another list in the same task to append it, or explicitly name a different document or tab.
 
-更多输入示例见 [examples/usage.md](examples/usage.md)。
+See [more examples](examples/usage.md) for common inputs and expected results (in Chinese).
 
-## 默认排版
+## Default layout
 
-| 项目 | 设置 |
+| Setting | Value |
 | --- | --- |
-| 纸张 | A4，纵向，四边页边距 72 pt |
-| 字体 | Arial，13 pt，加粗，黑色 |
-| 左列 | 英文居中，约 225.75 pt |
-| 右列 | 中文左对齐，约 224.25 pt |
-| 表格 | 0.75 pt 黑色虚线边框，约 36 pt 行高，18 行/页 |
-| 内边距 | 约 5 pt |
+| Paper | A4 portrait, 72 pt margins |
+| Font | Arial, 13 pt, bold, black |
+| English column | Centered, approximately 225.75 pt |
+| Chinese column | Left-aligned, approximately 224.25 pt |
+| Table | Black 0.75 pt dashed borders, approximately 36 pt row height |
+| Capacity | 18 rows per page |
+| Cell padding | Approximately 5 pt |
 
-## 保存、隐私和确认
+## Saving and privacy
 
-默认新建文档，不会擅自写入以往任务中的文件。追加词汇时保留已有内容，优先填写空行。识别不确定的手写内容会单独提示，不猜测写入。
+New tasks create new documents by default. Continuing a task fills empty rows without overwriting existing vocabulary. Unclear handwriting is flagged instead of being guessed.
 
-本仓库只提供技能规则和示例，不包含账号凭证、个人文档 ID 或真实学习记录。文档保存需要当前环境中已经授权的工具；没有权限时会说明原因，不会绕过权限。
+This repository contains only skill instructions and illustrative examples. It does not contain account credentials, personal document IDs, or real study records. A connected document editor requires the appropriate permissions.
 
-## 项目结构
+## Repository structure
 
 ```text
 vocabulary-organizer/
-├── SKILL.md            # 核心整理规则
+├── SKILL.md
 ├── agents/
-│   └── openai.yaml     # 技能名称和调用示例
+│   └── openai.yaml
 ├── examples/
-│   └── usage.md        # 常见场景与预期结果
-└── README.md
+│   └── usage.md
+├── README.md
+├── README.zh-CN.md
+└── README.ko.md
 ```
 
-欢迎通过 Issues 提出排版、识别或追加方面的问题。反馈时建议使用虚构的词汇示例，避免上传含个人信息的原始作业照片。
+Feedback and bug reports are welcome through GitHub Issues. Please use fictional examples rather than sharing private homework photos or documents.
